@@ -1,10 +1,10 @@
 #include <shell.h>
 
 /**
- *  the _myhistory will display history list
- * @info: Is the structure containing arguments Used to maintain
- *        constant function prototype.
- *  the return value is always zero
+ * _myhistory - displays the history list
+ * @info: pointer to the info_t struct
+ *
+ * Return: always 0
  */
 int _myhistory(info_t *info)
 {
@@ -13,19 +13,11 @@ int _myhistory(info_t *info)
 }
 
 /**
- * unset_alias will unset the alias name to be a datatype string
- * @str: the string alias
- * @info: parameter struct
+ * set_alias - sets the alias name to be a string
+ * @info: pointer to the info_t struct
+ * @str: the alias string
  *
- * if return === 0 ? "success " : "error"
- */
-
-/**
- * set_alias - will set the alias name to be a datatype string
- * @str: the string alias
- * @info: parameter struct
- *
- * if return === 0 ? "success " : "error"
+ * Return: 0 on success, otherwise 1
  */
 int set_alias(info_t *info, char *str)
 {
@@ -41,6 +33,13 @@ int set_alias(info_t *info, char *str)
     return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 
+/**
+ * unset_alias - unsets the alias name
+ * @info: pointer to the info_t struct
+ * @str: the alias string
+ *
+ * Return: 0 on success, otherwise 1
+ */
 int unset_alias(info_t *info, char *str)
 {
     char *p, c;
@@ -58,10 +57,10 @@ int unset_alias(info_t *info, char *str)
 }
 
 /**
- * print_alias will print the alias
- * @node: is the node of alias
+ * print_alias - prints the alias
+ * @node: the node of the alias
  *
- * if return === 0 ? "success " : "error"
+ * Return: 0 on success, otherwise 1
  */
 int print_alias(list_t *node)
 {
@@ -81,10 +80,10 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias will mimick the alias builtin (man alias)
- * @info: Structure containing potential arguments. Used to maintain
- *          the constant function prototype
- *  Return value is always zero
+ * _myalias - mimics the alias builtin
+ * @info: pointer to the info_t struct
+ *
+ * Return: always 0
  */
 int _myalias(info_t *info)
 {

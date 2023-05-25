@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * hsh - is  main shell loop
- *
+ * hsh - main shell loop
  * @av: the argument vector from main()
  * @info: the parameter & return info struct
+ *
  * Return: 0 on success, 1 on error, or error code
  */
 int hsh(info_t *info, char **av)
@@ -44,9 +44,10 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - searchs for  a builtin command
+ * find_builtin - searches for a builtin command
  * @info: the parameter & return info struct
  *
+ * Return: 0 on success, 1 on error, or error code
  */
 int find_builtin(info_t *info)
 {
@@ -63,12 +64,14 @@ int find_builtin(info_t *info)
         {NULL, NULL}};
 
     for (i = 0; builtintbl[i].type; i++)
+    {
         if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
         {
             info->line_count++;
             built_in_ret = builtintbl[i].func(info);
             break;
         }
+    }
     return (built_in_ret);
 }
 
@@ -90,8 +93,10 @@ void find_cmd(info_t *info)
         info->linecount_flag = 0;
     }
     for (i = 0, k = 0; info->arg[i]; i++)
+    {
         if (!is_delim(info->arg[i], " \t\n"))
             k++;
+    }
     if (!k)
         return;
 
@@ -113,6 +118,12 @@ void find_cmd(info_t *info)
     }
 }
 
+/**
+ * fork_cmd - forks and executes a command
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
 void fork_cmd(info_t *info)
 {
     pid_t child_pid;

@@ -8,5 +8,5 @@ For this project, unless specified otherwise, our program must have the exact sa
 ### Authors
 [Suvwe Adidi](https://github.com/suvwesukai)
 
-[Preston Nyamweya]
+[Preston Nyamweya](https://github.com/preston176)
 

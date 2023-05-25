@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * add_node - it adds a node to the start of the list
+ * add_node - adds a node to the start of the list
  *
  * @str: str field of node
  * @head: address of pointer to head node
  * @num: node index used by history
  *
- * Return: shows size of list
+ * Return: pointer to the new head of the list
  */
 list_t *add_node(list_t **head, const char *str, int num)
 {
@@ -39,10 +39,9 @@ list_t *add_node(list_t **head, const char *str, int num)
  *
  * @str: str field of node
  * @head: address of pointer to head node
- *
  * @num: node index used by history
  *
- * Return: the size of list
+ * Return: pointer to the new node added
  */
 list_t *add_node_end(list_t **head, const char *str, int num)
 {
@@ -138,10 +137,8 @@ int delete_node_at_index(list_t **head, unsigned int index)
 }
 
 /**
- * free_list - does the freeing of all nodes of a list
+ * free_list - frees all nodes of a list
  * @head_ptr: address of pointer to head node
- *
- * Return: is void ( no return value )
  */
 void free_list(list_t **head_ptr)
 {
