@@ -2,10 +2,9 @@
 
 /**
  * _myenv - prints the current environment
- * @info: is the container of the potential arguments.
+ * @info: pointer to the info_t struct
  *
- *
- * Return - it is always (0)
+ * Return: always 0
  */
 int _myenv(info_t *info)
 {
@@ -14,10 +13,11 @@ int _myenv(info_t *info)
 }
 
 /**
- * _getenv - gets the value of an environental  variable
- * @name: env var name
+ * _getenv - gets the value of an environmental variable
+ * @info: pointer to the info_t struct
+ * @name: name of the environment variable
  *
- * returns the value - return
+ * Return: the value of the environment variable, or NULL if not found
  */
 char *_getenv(info_t *info, const char *name)
 {
@@ -35,16 +35,16 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * _mysetenv - used to init a variable
- * @info: Structure containing potential arguments.
+ * _mysetenv - sets the value of an environment variable
+ * @info: pointer to the info_t struct
  *
- *  Return: Always 0
+ * Return: always 0
  */
 int _mysetenv(info_t *info)
 {
     if (info->argc != 3)
     {
-        _eputs("Incorrect number of arguements\n");
+        _eputs("Incorrect number of arguments\n");
         return (1);
     }
     if (_setenv(info, info->argv[1], info->argv[2]))
@@ -53,10 +53,10 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Remove an environment variable
- * @info:  is the  actual container of the  potential arguments.
+ * _myunsetenv - removes an environment variable
+ * @info: pointer to the info_t struct
  *
- * return is 0
+ * Return: always 0
  */
 int _myunsetenv(info_t *info)
 {
@@ -64,7 +64,7 @@ int _myunsetenv(info_t *info)
 
     if (info->argc == 1)
     {
-        _eputs("Too few arguements.\n");
+        _eputs("Too few arguments.\n");
         return (1);
     }
     for (i = 1; i <= info->argc; i++)
@@ -74,10 +74,10 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * return is 0
+ * populate_env_list - populates the env linked list
+ * @info: pointer to the info_t struct
+ *
+ * Return: always 0
  */
 int populate_env_list(info_t *info)
 {

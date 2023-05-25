@@ -5,7 +5,8 @@
  * @s: the pointer to the memory area
  * @b: the byte to fill *s with
  * @n: the amount of bytes to be filled
- * Return: (s) a pointer to the memory area s
+ *
+ * Return: a pointer to the memory area s
  */
 char *_memset(char *s, char b, unsigned int n)
 {
@@ -17,10 +18,8 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- *
- * @pp: string of strings
- *
  * ffree - frees a string of strings
+ * @pp: string of strings
  */
 void ffree(char **pp)
 {
@@ -34,13 +33,12 @@ void ffree(char **pp)
 }
 
 /**
- * _realloc - does reallocation a block of memory
- * @old_size: is the byte size of previous block
- * @ptr: pointer to previous malloc'ated block
+ * _realloc - reallocates a block of memory
+ * @ptr: pointer to previous malloc'ed block
+ * @old_size: byte size of previous block
+ * @new_size: byte size of new block
  *
- * @new_size: is the byte size of new block
- *
- * Return: is the pointer to da ol'block nameen.
+ * Return: a pointer to the reallocated block
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -49,7 +47,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
     if (!ptr)
         return (malloc(new_size));
     if (!new_size)
-        return (free(ptr), NULL);
+    {
+        free(ptr);
+        return (NULL);
+    }
     if (new_size == old_size)
         return (ptr);
 

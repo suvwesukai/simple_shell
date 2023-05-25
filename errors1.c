@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 /**
- * _erratoi - converts a given  string to an integer
- * @s: is the the string to be converted
+ * _erratoi - converts a given string to an integer
+ * @s: the string to be converted
  * Return: -1 on error
  */
 int _erratoi(char *s)
@@ -30,11 +30,9 @@ int _erratoi(char *s)
 
 /**
  * print_error - prints an error message
- *
- * @estr: is the string containing specified error type
  * @info: the parameter & return info structure
- * Return: 0 if no numbers in string, converted number otherwise
- *        -1 on error
+ * @estr: the string containing the specified error type
+ * Return: void
  */
 void print_error(info_t *info, char *estr)
 {
@@ -48,11 +46,10 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - function prints a decimal (integer) number (base 10)
- * @input: is the input
- * @fd: the filedescriptor to write to
- *
- * Return: is the number of characters printed
+ * print_d - prints a decimal (integer) number (base 10)
+ * @input: the input
+ * @fd: the file descriptor to write to
+ * Return: the number of characters printed
  */
 int print_d(int input, int fd)
 {
@@ -91,8 +88,7 @@ int print_d(int input, int fd)
  * @num: number
  * @base: base
  * @flags: flags argument
- *
- * Return - the string
+ * Return: the string
  */
 char *convert_number(long int num, int base, int flags)
 {
@@ -123,10 +119,9 @@ char *convert_number(long int num, int base, int flags)
 }
 
 /**
- * @buf: is the address of the string to modify
- * remove_comments - is the function replaces first instance of '#' with '\0'
- *
- * Return: it is 0;
+ * remove_comments - replaces the first instance of '#' with '\0'
+ * @buf: the address of the string to modify
+ * Return: void
  */
 void remove_comments(char *buf)
 {

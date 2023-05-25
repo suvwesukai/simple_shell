@@ -1,14 +1,12 @@
 #include "shell.h"
 
 /**
- * is_chain - test if current char in buffer is a chain delimeter
- * @p: address of current position in buf
- * @buf: the char buffer
+ * is_chain - test if current char in buffer is a chain delimiter
  * @info: the parameter struct
+ * @buf: the char buffer
+ * @p: address of current position in buf
  *
- *
- *
- * Return: 1 if chain delimeter, 0 otherwise
+ * Return: 1 if chain delimiter, 0 otherwise
  */
 int is_chain(info_t *info, char *buf, size_t *p)
 {
@@ -16,19 +14,19 @@ int is_chain(info_t *info, char *buf, size_t *p)
 
     if (buf[j] == '|' && buf[j + 1] == '|')
     {
-        buf[j] = 0;
+        buf[j] = '\0';
         j++;
         info->cmd_buf_type = CMD_OR;
     }
     else if (buf[j] == '&' && buf[j + 1] == '&')
     {
-        buf[j] = 0;
+        buf[j] = '\0';
         j++;
         info->cmd_buf_type = CMD_AND;
     }
     else if (buf[j] == ';') /* found end of this command */
     {
-        buf[j] = 0; /* replace semicolon with null */
+        buf[j] = '\0'; /* replace semicolon with null */
         info->cmd_buf_type = CMD_CHAIN;
     }
     else
@@ -38,14 +36,12 @@ int is_chain(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * check_chain - checks we should continue chaining based on last status
- *
+ * check_chain - checks if we should continue chaining based on last status
+ * @info: the parameter struct
+ * @buf: the char buffer
  * @p: address of current position in buf
  * @i: starting position in buf
  * @len: length of buf
- * @info: the parameter struct
- * @buf: the char buffer
- *
  *
  * Return: Void
  */
@@ -57,7 +53,7 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
     {
         if (info->status)
         {
-            buf[i] = 0;
+            buf[i] = '\0';
             j = len;
         }
     }
@@ -65,7 +61,7 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
     {
         if (!info->status)
         {
-            buf[i] = 0;
+            buf[i] = '\0';
             j = len;
         }
     }
@@ -74,10 +70,10 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 }
 
 /**
- * replace_alias - replaces an aliases in the tokenized string
+ * replace_alias - replaces an alias in the tokenized string
  * @info: the parameter struct
  *
- * Return: Replaced ? "1" : "0"
+ * Return: Replaced ? 1 : 0
  */
 int replace_alias(info_t *info)
 {
@@ -106,7 +102,7 @@ int replace_alias(info_t *info)
  * replace_vars - replaces vars in the tokenized string
  * @info: the parameter struct
  *
- * Return: Replaced ? "1" : "0"
+ * Return: Replaced ? 1 : 0
  */
 int replace_vars(info_t *info)
 {
@@ -147,7 +143,7 @@ int replace_vars(info_t *info)
  * @old: address of old string
  * @new: new string
  *
- * Return: Replaced ? "1" : "0"
+ * Return: Replaced ? 1 : 0
  */
 int replace_string(char **old, char *new)
 {

@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _eputs - will print inpput string
- * @str: is "to print" string
+ * _eputs - prints an input string
+ * @str: the string to be printed
  *
- * No return value
+ * Return: void
  */
 void _eputs(char *str)
 {
@@ -20,10 +20,10 @@ void _eputs(char *str)
 }
 
 /**
- * _eputchar - will write character c to stderr
- * @c: The character to be printed
+ * _eputchar - writes a character to stderr
+ * @c: the character to be printed
  *
- * Return == 1 ? "success" : "fail"
+ * Return: 1 for success, -1 for failure
  */
 int _eputchar(char c)
 {
@@ -41,12 +41,11 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd - writes the character c to filedescriptor
- * @c: is the character to print
- * @fd: is the filedescriptor to write to
+ * _putfd - writes a character to a file descriptor
+ * @c: the character to print
+ * @fd: the file descriptor to write to
  *
- * Return == 1 ? "success" : "fail"
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: 1 for success, -1 for failure
  */
 int _putfd(char c, int fd)
 {
@@ -64,11 +63,11 @@ int _putfd(char c, int fd)
 }
 
 /**
- * _putsfd - does printing an input string
- * @str: is the string to be printed
- * @fd:  is the filedescriptor to write to
+ * _putsfd - prints an input string to a file descriptor
+ * @str: the string to be printed
+ * @fd: the file descriptor to write to
  *
- * Return - no of characters to be put
+ * Return: the number of characters printed
  */
 int _putsfd(char *str, int fd)
 {
